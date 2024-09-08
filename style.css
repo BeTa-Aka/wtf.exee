@@ -1,0 +1,73 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and canvas setup */
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+/* Starry background effect */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1; /* Star background has lower z-index than canvas */
+    overflow: hidden;
+}
+
+/* Regular Stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: starMovement 10s linear infinite, starTwinkle 2s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+/* Twinkling and moving stars */
+@keyframes starTwinkle {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes starMovement {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh); /* Move stars down */
+    }
+}
+
+/* Canvas is on top of the star background */
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;  /* Ensure canvas is above stars */
+}
+
+/* Health Kit and Power-Up */
+.healthKit, .powerUp {
+    position: absolute;
+    background-size: cover;
+}
+
+
+

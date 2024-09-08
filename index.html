@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Hunter</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .lobby-container {
+            max-width: 600px;
+            margin: 20px;
+        }
+        .lobby-container h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .lobby-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .lobby-container button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .lobby-container button:hover {
+            background-color: #0056b3;
+        }
+        .social-media {
+            margin-top: 20px;
+        }
+        .social-media a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .social-media img {
+            width: 40px;
+            height: 40px;
+        }
+        /* Add styles for the game canvas here if needed */
+        #gameCanvas {
+            display: none; /* Hide canvas initially */
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="lobby-container" id="lobby">
+        <h1>Welcome to Space Hunter!</h1>
+        <p>Space Hunter is an exhilarating space shooter game where you pilot a ship through hostile space and battle against waves of enemies. Survive the onslaught, collect power-ups, and improve your skills as you advance through increasingly challenging waves.</p>
+        <button onclick="startGame()">Play Game</button>
+        <div class="social-media">
+            <a href="https://discord.gg/your-discord-link" target="_blank">
+                <img src="assets/discord-icon.png" alt="Join our Discord">
+            </a>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="game.js"></script>
+    <script>
+        function startGame() {
+            document.querySelector('.lobby-container').style.display = 'none'; // Hide lobby
+            document.getElementById('gameCanvas').style.display = 'block'; // Show game canvas
+            startGameLoop(); // Start the game
+        }
+
+        function startGameLoop() {
+            // Initialize and start your game here
+            if (typeof initializeGame === 'function') {
+                initializeGame();
+            }
+        }
+
+        function restartGame() {
+            document.querySelector('.lobby-container').style.display = 'block'; // Show lobby
+            document.getElementById('gameCanvas').style.display = 'none'; // Hide game canvas
+        }
+    </script>
+</body>
+</html>
